@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <base href="./">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Я — студент ВШЭ | Главная</title>
+  <link rel="icon" href="favicon.ico">
+
+  <style>
+    :root{
+      --bg: #0b0d12;
+      --panel: rgba(255,255,255,0.06);
+      --panel-border: rgba(255,255,255,0.08);
+      --text: #e9eef7;
+      --muted: rgba(233,238,247,0.65);
+      --muted2: rgba(233,238,247,0.5);
+      --accent: rgba(255,255,255,0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    a{ color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+    a:hover{ opacity: 0.9; }
+
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+    .topbar{
+      background: #0f1116;
+      border-bottom: 1px solid var(--panel-border);
+      padding: 18px 0;
+    }
+    .topbar__inner{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar__title{
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0.2px;
+    }
+    .topbar__subtitle{
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+    .topbar__logo{
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    nav{
+      border-bottom: 1px solid var(--panel-border);
+      background: rgba(15,17,22,0.75);
+      backdrop-filter: blur(6px);
+    }
+    .nav__links{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+    .nav__links a{
+      text-decoration: none;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: var(--accent);
+      border: 1px solid var(--panel-border);
+    }
+
+    main{ padding: 18px 0 26px; }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .grid{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+
+    h2{ margin: 0 0 10px; font-size: 22px; }
+    h3{ margin: 0 0 10px; font-size: 16px; color: var(--muted); letter-spacing: 0.02em; }
+    p{ margin: 10px 0; }
+    .muted{ color: var(--muted); }
+    hr{
+      border: none;
+      border-top: 1px solid var(--panel-border);
+      margin: 14px 0;
+    }
+
+    figure{ margin: 0; }
+    figcaption{ color: var(--muted); font-size: 14px; margin-top: 8px; }
+
+    code{
+      background: rgba(255,255,255,0.10);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
+    ul, ol { margin: 10px 0 10px 22px; }
+    li { margin: 4px 0; }
+
+    dt{ font-weight: 700; margin-top: 8px; }
+    dd{ margin: 4px 0 0 0; color: var(--muted); }
+
+    .schedule__header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 8px;
+    }
+    .schedule__title{
+      margin: 0;
+      font-size: 26px;
+    }
+    .schedule__icon{
+      text-decoration: none;
+      font-size: 22px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: var(--accent);
+      border: 1px solid var(--panel-border);
+    }
+    .schedule__hint{
+      margin: 14px 0 18px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      color: var(--muted);
+    }
+    .day{ margin-top: 18px; }
+    .day__title{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--muted2);
+    }
+    .lesson{
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      padding: 14px 14px 12px;
+      margin-bottom: 12px;
+    }
+    .lesson__meta{
+      display:flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .lesson__num{
+      min-width: 28px;
+      height: 28px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.08);
+      color: rgba(233,238,247,0.9);
+      font-weight: 700;
+    }
+    .lesson__time{ margin-left: auto; }
+    .lesson__name{ margin: 10px 0 8px; font-size: 18px; }
+    .lesson__teacher{ margin: 0 0 4px; color: rgba(233,238,247,0.78); }
+    .lesson__place{ margin: 0; color: var(--muted2); }
+
+    table{ width: 100%; border-collapse: collapse; margin-top: 10px; }
+    caption{ text-align: left; color: var(--muted); margin-bottom: 8px; }
+    th, td{
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 10px;
+      vertical-align: top;
+    }
+    thead{ background: rgba(255,255,255,0.05); }
+
+    .logos{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      margin: 8px 0 12px;
+    }
+    .logos img{
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--panel-border);
+      border-radius: 14px;
+      padding: 8px;
+    }
+
+    footer{
+      border-top: 1px solid var(--panel-border);
+      padding: 18px 0;
+      color: var(--muted);
+    }
+
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+      .topbar__title{ font-size: 24px; }
+      .schedule__title{ font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <div>
+        <h1 class="topbar__title">Я — студент ВШЭ</h1>
+        <p class="topbar__subtitle">Личная страница + расписание занятий</p>
+      </div>
+
+      <img class="topbar__logo"
+           src="https://upload.wikimedia.org/wikipedia/ru/thumb/8/81/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9D%D0%98%D0%A3_%D0%92%D0%A8%D0%AD.svg/960px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9D%D0%98%D0%A3_%D0%92%D0%A8%D0%AD.svg.png"
+           alt="Логотип НИУ ВШЭ">
+    </div>
+  </header>
+
+  <nav aria-label="Основная навигация">
+    <div class="wrap nav__links">
+      <a href="index.html">Главная</a>
+      <a href="feedback.html">Обратная связь</a>
+      <a href="#schedule">Расписание</a>
+      <a href="#study">Учёба</a>
+      <a href="#tech">Технологии</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="grid">
+      <section class="card">
+        <h2>Обо мне</h2>
+        <p>
+          Я учусь в <mark>НИУ ВШЭ</mark>. На этой странице я показываю структуру HTML:
+          есть <code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code> и семантические блоки.
+        </p>
+
+        <article>
+          <h3>Коротко</h3>
+          <p class="muted">
+            Интересы: ML, статистика, компьютерное зрение. 
+            Сегодня:
+            <time datetime="2026-02-11">11 февраля 2026</time>.
+          </p>
+
+          <figure>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9C%D0%98%D0%AD%D0%9C.svg/3840px-%D0%9B%D0%BE%D0%B3%D0%BE%D1%82%D0%B8%D0%BF_%D0%9C%D0%98%D0%AD%D0%9C.svg.png"
+                 alt="Иллюстрация к странице студента ВШЭ"
+                 width="940" height="360"
+                 style="width:100%;height:auto;border-radius:16px;border:1px solid rgba(255,255,255,0.10);">
+            <figcaption>Пример графики на главной странице (теги: <code>figure</code>, <code>img</code>, <code>figcaption</code>).</figcaption>
+          </figure>
+
+          <hr>
+
+          <p>
+            Всегда полезно получать обратную связь:
+            <a href="feedback.html">перейти к форме</a>.
+          </p>
+        </article>
+
+        <section>
+          <h3>Чем занимаюсь</h3>
+          <ul>
+            <li>учусь и делаю учебные проекты</li>
+            <li>верстаю страницы и практикую семантику</li>
+            <li>стараюсь оформлять результаты аккуратно</li>
+          </ul>
+
+          <p>План на ближайшее время:</p>
+          <ol>
+            <li>сдать ЛР1 (HTML)</li>
+            <li>добавить стили CSS (ЛР2)</li>
+            <li>подключить JS-интерактив (ЛР3)</li>
+          </ol>
+
+          <details>
+            <summary>Небольшой словарик</summary>
+            <dl>
+              <dt>Семантические теги</dt>
+              <dd>теги, которые задают смысл структуры: <code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>, <code>footer</code></dd>
+              <dt>Строчные теги</dt>
+              <dd>используются внутри строки: <code>a</code>, <code>span</code>, <code>code</code>, <code>mark</code></dd>
+            </dl>
+          </details>
+        </section>
+      </section>
+
+      <aside class="card">
+        <h2>Быстрые факты</h2>
+        <p>
+          Статус: <data value="student">студент</data><br>
+          Формат: <span class="muted">семинары + практика</span>
+        </p>
+
+        <hr>
+
+        <h3>Контакты</h3>
+        <p class="muted">Удобнее всего написать через форму:</p>
+        <p><a href="feedback.html">Открыть форму обратной связи</a></p>
+
+        <hr>
+
+        <h3>Мини-SVG</h3>
+        <svg width="120" height="60" viewBox="0 0 120 60" aria-label="SVG-пример">
+          <rect x="6" y="6" width="108" height="48" rx="14" ry="14" fill="none" stroke="white" opacity="0.7"></rect>
+          <text x="60" y="38" text-anchor="middle" font-size="16" fill="white" opacity="0.8">HSE</text>
+        </svg>
+
+        <p class="muted">Это просто демонстрация тега <code>svg</code>.</p>
+      </aside>
+    </section>
+
+    <section class="card schedule" id="schedule">
+      <div class="schedule__header">
+        <h2 class="schedule__title">Расписание</h2>
+        <a class="schedule__icon" href="#schedule" aria-label="Календарь">📅</a>
+      </div>
+
+      <section class="day">
+        <h3 class="day__title">ПОНЕДЕЛЬНИК, 9 ФЕВРАЛЯ</h3>
+        <p class="schedule__hint">В этот день пар нет</p>
+        </section>
+
+      <section class="day">
+        <h3 class="day__title">ВТОРНИК, 10 ФЕВРАЛЯ</h3>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">2</span>
+            <span>Лекция</span>
+            <time class="lesson__time" datetime="11:10">11:10–12:30</time>
+          </div>
+          <h4 class="lesson__name">Компьютерное зрение (рус)</h4>
+          <p class="lesson__teacher">Рыбаков Пётр Владимирович</p>
+          <p class="lesson__place">410, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">3</span>
+            <span>Лекция</span>
+            <time class="lesson__time" datetime="13:00">13:00–14:20</time>
+          </div>
+          <h4 class="lesson__name">Прикладные стохастические модели (рус)</h4>
+          <p class="lesson__teacher">Гришунина Юлия Борисовна</p>
+          <p class="lesson__place">308, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">4</span>
+            <span>Проведение семинаров (студенты)</span>
+            <time class="lesson__time" datetime="14:40">14:40–16:00</time>
+          </div>
+          <h4 class="lesson__name">Прикладные стохастические модели (рус)</h4>
+          <p class="lesson__teacher">Гришунина Юлия Борисовна</p>
+          <p class="lesson__place">123, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">5</span>
+            <span>Проведение семинаров (студенты)</span>
+            <time class="lesson__time" datetime="16:20">16:20–17:40</time>
+          </div>
+          <h4 class="lesson__name">Компьютерное зрение (рус)</h4>
+          <p class="lesson__teacher">Шевцов Никита Сергеевич</p>
+          <p class="lesson__place">404, Таллинская ул., д. 34</p>
+        </article>
+      </section>
+
+      <section class="day">
+        <h3 class="day__title">СРЕДА, 11 ФЕВРАЛЯ</h3>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">2</span>
+            <span>Лекция</span>
+            <time class="lesson__time" datetime="11:10">11:10–12:30</time>
+          </div>
+          <h4 class="lesson__name">Компьютерное зрение (рус)</h4>
+          <p class="lesson__teacher">Рыбаков Пётр Владимирович</p>
+          <p class="lesson__place">413, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">3</span>
+            <span>Лекция</span>
+            <time class="lesson__time" datetime="13:00">13:00–14:20</time>
+          </div>
+          <h4 class="lesson__name">Веб-программирование (рус)</h4>
+          <p class="lesson__teacher">Зонтов Юрий Владимирович</p>
+          <p class="lesson__place">123, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">4</span>
+            <span>Проведение семинаров (студенты)</span>
+            <time class="lesson__time" datetime="14:40">14:40–16:00</time>
+          </div>
+          <h4 class="lesson__name">Веб-программирование (рус)</h4>
+          <p class="lesson__teacher">Зонтов Юрий Владимирович</p>
+          <p class="lesson__place">123, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">5</span>
+            <span>Лекция</span>
+            <time class="lesson__time" datetime="16:20">16:20–17:40</time>
+          </div>
+          <h4 class="lesson__name">Категорийное управление закупками и запасами в логистике (рус)</h4>
+          <p class="lesson__teacher">Эльяшевич Иван Павлович</p>
+          <p class="lesson__place">304, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">6</span>
+            <span>Проведение семинаров (студенты)</span>
+            <time class="lesson__time" datetime="18:10">18:10–19:30</time>
+          </div>
+          <h4 class="lesson__name">Категорийное управление закупками и запасами в логистике (рус)</h4>
+          <p class="lesson__teacher">Эльяшевич Иван Павлович</p>
+          <p class="lesson__place">302, Таллинская ул., д. 34</p>
+        </article>
+      </section>
+
+      <section class="day">
+        <h3 class="day__title">ЧЕТВЕРГ, 12 ФЕВРАЛЯ</h3>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">1</span>
+            <span>Лекция</span>
+            <time class="lesson__time" datetime="09:30">09:30–10:50</time>
+          </div>
+          <h4 class="lesson__name">Введение в суперкомпьютерное моделирование (рус)</h4>
+          <p class="lesson__teacher">Писарев Василий Вячеславович</p>
+          <p class="lesson__place">408, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">2</span>
+            <span>Проведение семинаров (студенты)</span>
+            <time class="lesson__time" datetime="11:10">11:10–12:30</time>
+          </div>
+          <h4 class="lesson__name">Введение в суперкомпьютерное моделирование (рус)</h4>
+          <p class="lesson__teacher">Писарев Василий Вячеславович</p>
+          <p class="lesson__place">404, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">3</span>
+            <span>Проведение семинаров (студенты)</span>
+            <time class="lesson__time" datetime="13:00">13:00–14:20</time>
+          </div>
+          <h4 class="lesson__name">Компьютерное зрение (рус)</h4>
+          <p class="lesson__teacher">Шевцов Никита Сергеевич</p>
+          <p class="lesson__place">206, Таллинская ул., д. 34</p>
+        </article>
+
+        <article class="lesson">
+          <div class="lesson__meta">
+            <span class="lesson__num">4</span>
+            <span>Проведение практических занятий</span>
+            <time class="lesson__time" datetime="14:40">14:40–16:00</time>
+          </div>
+          <h4 class="lesson__name">Прикладные стохастические модели (рус)</h4>
+          <p class="lesson__teacher">Голубин Алексей Юрьевич</p>
+          <p class="lesson__place">302, Таллинская ул., д. 34</p>
+        </article>
+      </section>
+
+        <section class="day">
+        <h3 class="day__title">ПЯТНИЦА, 13 ФЕВРАЛЯ</h3>
+        <p class="schedule__hint">В этот день пар нет</p>
+        </section>
+
+        <section class="day">
+        <h3 class="day__title">СУББОТА, 14 ФЕВРАЛЯ</h3>
+        <p class="schedule__hint">В этот день пар нет</p>
+        </section>
+
+        <section class="day">
+        <h3 class="day__title">ВОСКРЕСЕНЬЕ, 15 ФЕВРАЛЯ</h3>
+        <p class="schedule__hint">В этот день пар нет</p>
+        </section>
+
+    </section>
+
+    <section class="card" id="study">
+      <h2>Учёба</h2>
+
+      <div class="logos">
+        <div>
+          <p style="margin:0;"><strong>МИЭМ</strong> — мой институт.</p>
+          <p class="muted" style="margin:4px 0 0;">Основные дисциплины сейчас: компьютерное зрение, веб-программирование, стохастические модели.</p>
+        </div>
+      </div>
+
+      <p class="muted">Ниже — пример семантики: отдельные разделы и полезные детали.</p>
+
+      <details>
+        <summary>Что мне нравится в учебе</summary>
+        <p class="muted">
+          Когда можно быстро применить теорию, например, сделать маленький проект и показать результат, когда более понятно, зачем нужна та или иная теория.
+        </p>
+      </details>
+    </section>
+
+    <section class="card" id="tech">
+      <h2>Технологии</h2>
+      <p>
+        На веб-практике используем <code>HTML</code>, <code>CSS</code> и базовый <code>JavaScript</code>.
+        (JS подключу в дальнейших ДЗ.)
+      </p>
+
+      <table>
+        <caption>Стек на данном курсе</caption>
+        <thead>
+          <tr>
+            <th>Технология</th>
+            <th>Зачем</th>
+            <th>Уровень</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>HTML</td>
+            <td>структура и семантика страницы</td>
+            <td>средний</td>
+          </tr>
+          <tr>
+            <td>CSS</td>
+            <td>внешний вид, сетки, адаптив</td>
+            <td>средний</td>
+          </tr>
+          <tr>
+            <td>JavaScript</td>
+            <td>интерактив (карта/чат в ЛР3)</td>
+            <td>средний</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <p class="muted">
+        Для демонстрации “блочного” и “строчного”: этот абзац — блочный,
+        а <span>span</span>, <a href="feedback.html">ссылка</a>, <code>code</code>, <mark>mark</mark> — строчные.
+      </p>
+
+      <h3 style="margin-top:14px;">HTML5 Canvas (пример тега)</h3>
+      <canvas width="360" height="90" aria-label="Canvas пример"
+              style="width:100%;max-width:520px;border-radius:14px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.04);">
+        Ваш браузер не поддерживает canvas.
+      </canvas>
+      <p class="muted">В дальнейших ДЗ можно будет нарисовать тут что-то через JS.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <time datetime="2026">2026</time> — учебный проект “Я — студент ВШЭ”.</p>
+      <address>Контакты: <a href="feedback.html">форма обратной связи</a></address>
+    </div>
+  </footer>
+</body>
+</html>
