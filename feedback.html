@@ -5,151 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Я — студент ВШЭ | Обратная связь</title>
+  <link rel="stylesheet" href="styles.css">
 
   <style>
-    :root{
-      --bg: #0b0d12;
-      --panel: rgba(255,255,255,0.06);
-      --panel-border: rgba(255,255,255,0.08);
-      --text: #e9eef7;
-      --muted: rgba(233,238,247,0.65);
-      --radius: 18px;
-    }
-    *{ box-sizing: border-box; }
-    body{
-      margin:0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height:1.5;
-    }
-    .wrap{ max-width: 980px; margin: 0 auto; padding: 0 16px; }
-
     header{
       background:#0f1116;
       border-bottom:1px solid var(--panel-border);
       padding:18px 0;
     }
     h1{ margin:0; font-size:26px; }
-    .muted{ color: var(--muted); }
-
-    nav{
-      border-bottom:1px solid var(--panel-border);
-      background: rgba(15,17,22,0.75);
-      backdrop-filter: blur(6px);
-    }
-    .nav__links{
-      display:flex;
-      gap:14px;
-      flex-wrap: wrap;
-      padding: 12px 0;
-    }
-    .nav__links a{
-      color: var(--text);
-      text-decoration: none;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid var(--panel-border);
-    }
-
-    main{ padding: 18px 0 26px; }
-
-    .card{
-      background: var(--panel);
-      border: 1px solid var(--panel-border);
-      border-radius: var(--radius);
-      padding: 16px;
-      margin: 16px 0;
-    }
-
-    label{ display:block; font-weight:700; margin: 12px 0 6px; }
-    input, textarea, select{
-      width:100%;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-    }
-    textarea{ min-height: 130px; resize: vertical; }
-
-    fieldset{
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: var(--radius);
-      padding: 12px 14px 14px;
-      margin: 14px 0;
-    }
-    legend{ padding: 0 8px; color: var(--muted); }
-
-    .row{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .form-grid{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .checkbox-row{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-    .checkbox-row input{
-      width: auto;
-      transform: scale(1.1);
-    }
-
-    .file-box{
-      border: 2px dashed rgba(255,255,255,0.20);
-      background: rgba(255,255,255,0.03);
-      border-radius: 14px;
-      padding: 14px;
-    }
-    .file-box__top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .file-box__hint{
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .file-input{
-      width: 100%;
-      padding: 10px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-    }
-
-    .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    button{
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.10);
-      color: var(--text);
-      cursor: pointer;
-    }
-
-    footer{
-      border-top: 1px solid var(--panel-border);
-      padding: 18px 0;
-      color: var(--muted);
-    }
-
-    @media (max-width: 860px){
-      .row{ grid-template-columns: 1fr; }
-    }
+    .btns button:first-child { font-weight: 700; }
+    .card h2 { letter-spacing: 0.2px; }
   </style>
 </head>
 

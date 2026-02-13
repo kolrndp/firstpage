@@ -1,0 +1,296 @@
+:root{
+  --bg: #0b0d12;
+  --panel: rgba(255,255,255,0.06);
+  --panel-border: rgba(255,255,255,0.08);
+  --text: #e9eef7;
+  --muted: rgba(233,238,247,0.65);
+  --muted2: rgba(233,238,247,0.5);
+  --accent: rgba(255,255,255,0.10);
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a{ color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+a:hover{ opacity: 0.9; }
+
+.wrap{ max-width: 980px; margin: 0 auto; padding: 0 16px; }
+
+nav{
+  border-bottom: 1px solid var(--panel-border);
+  background: rgba(15,17,22,0.75);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav__links{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 12px 0;
+}
+.nav__links a{
+  text-decoration: none !important;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--accent);
+  border: 1px solid var(--panel-border);
+}
+
+main{ padding: 18px 0 26px; }
+
+.card{
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+h2{ margin: 0 0 10px; font-size: 22px; }
+h3{ margin: 0 0 10px; font-size: 16px; color: var(--muted); letter-spacing: 0.02em; }
+p{ margin: 10px 0; }
+.muted{ color: var(--muted); }
+hr{
+  border: none;
+  border-top: 1px solid var(--panel-border);
+  margin: 14px 0;
+}
+
+figure{ margin: 0; }
+figcaption{ color: var(--muted); font-size: 14px; margin-top: 8px; }
+
+code{
+  background: rgba(255,255,255,0.10);
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+ul, ol { margin: 10px 0 10px 22px; }
+li { margin: 4px 0; }
+
+dt{ font-weight: 700; margin-top: 8px; }
+dd{ margin: 4px 0 0 0; color: var(--muted); }
+
+.schedule__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom: 8px;
+}
+.schedule__title{
+  margin: 0;
+  font-size: 26px;
+}
+.schedule__icon{
+  text-decoration: none;
+  font-size: 22px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--accent);
+  border: 1px solid var(--panel-border);
+  position: relative;
+  top: 0;
+}
+.schedule__hint{
+  margin: 14px 0 18px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  color: var(--muted);
+}
+.schedule__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.schedule__grid .day{ margin-top: 0; }
+.day{ margin-top: 18px; }
+.day__title{
+  margin: 0 0 10px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--muted2);
+}
+.day__title::before{
+  content: "• ";
+  opacity: 0.7;
+}
+.lesson{
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 14px 14px 12px;
+  margin-bottom: 12px;
+}
+.lesson__meta{
+  display:flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.lesson__num{
+  min-width: 28px;
+  height: 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(233,238,247,0.9);
+  font-weight: 700;
+}
+.lesson__time{ margin-left: auto; }
+.lesson__name{ margin: 10px 0 8px; font-size: 18px; }
+.lesson__teacher{ margin: 0 0 4px; color: rgba(233,238,247,0.78); }
+.lesson__place{ margin: 0; color: var(--muted2); }
+
+table{ width: 100%; border-collapse: collapse; margin-top: 10px; }
+caption{ text-align: left; color: var(--muted); margin-bottom: 8px; }
+th, td{
+  border: 1px solid rgba(255,255,255,0.14);
+  padding: 10px;
+  vertical-align: top;
+}
+thead{ background: rgba(255,255,255,0.05); }
+
+.logos{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+.logos img{
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 8px;
+}
+
+label{ display:block; font-weight:700; margin: 12px 0 6px; }
+input, textarea, select{
+  width:100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+}
+textarea{ min-height: 130px; resize: vertical; }
+
+fieldset{
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  padding: 12px 14px 14px;
+  margin: 14px 0;
+}
+legend{ padding: 0 8px; color: var(--muted); }
+
+.row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.checkbox-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.checkbox-row input{
+  width: auto;
+  transform: scale(1.1);
+}
+
+.file-box{
+  border: 2px dashed rgba(255,255,255,0.20);
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  padding: 14px;
+}
+.file-box__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.file-box__hint{
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.file-input{
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+}
+
+.btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+button{
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.10);
+  color: var(--text);
+  cursor: pointer;
+}
+
+footer{
+  border-top: 1px solid var(--panel-border);
+  padding: 18px 0;
+  color: var(--muted);
+}
+
+#tech {
+  scroll-margin-top: 90px;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+input[type="email"]{
+  border-color: rgba(120,200,255,0.35);
+}
+
+input:focus, textarea:focus, select:focus{
+  outline: 2px solid rgba(255,255,255,0.22);
+  outline-offset: 2px;
+}
+
+@media (max-width: 860px){
+  .grid{ grid-template-columns: 1fr; }
+  .topbar__title{ font-size: 24px; }
+  .schedule__title{ font-size: 22px; }
+  .schedule__grid{ grid-template-columns: 1fr; }
+  .row{ grid-template-columns: 1fr; }
+}
