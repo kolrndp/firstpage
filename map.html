@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <base href="./">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Я — студент ВШЭ | Карта</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico">
+
+  <style>
+    header{
+      background:#0f1116;
+      border-bottom:1px solid var(--panel-border);
+      padding:18px 0;
+    }
+    h1{ margin:0; font-size:26px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Карта</h1>
+      <p class="muted" style="margin:6px 0 0;">Локация МИЭМ НИУ ВШЭ.</p>
+    </div>
+  </header>
+
+  <nav aria-label="Основная навигация">
+    <div class="wrap nav__links">
+      <a href="index.html">Главная</a>
+      <a href="feedback.html">Обратная связь</a>
+      <a href="map.html">Карта</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="card">
+      <h2>Карта</h2>
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>© <time datetime="2026">2026</time> — учебный проект “Я — студент ВШЭ”.</p>
+      <address>Контакты: <a href="feedback.html">форма обратной связи</a></address>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="script.js"></script>
+</body>
+</html>

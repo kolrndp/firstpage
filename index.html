@@ -57,6 +57,7 @@
     <div class="wrap nav__links">
       <a href="index.html">Главная</a>
       <a href="feedback.html">Обратная связь</a>
+      <a href="map.html">Карта</a>
     </div>
   </nav>
 
@@ -363,11 +364,12 @@
       </p>
 
       <h3 style="margin-top:14px;">HTML5 Canvas (пример тега)</h3>
-      <canvas width="360" height="90" aria-label="Canvas пример"
-              style="width:100%;max-width:520px;border-radius:14px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.04);">
-        Ваш браузер не поддерживает canvas.
-      </canvas>
-      <p class="muted">В дальнейших ДЗ можно будет нарисовать тут что-то через JS.</p>
+      <div class="canvas-wrap">
+        <canvas id="drawCanvas" class="canvas-draw" width="800" height="220" aria-label="Canvas пример">
+          Ваш браузер не поддерживает canvas.
+        </canvas>
+        <button type="button" class="canvas-clear" id="clearCanvas">Очистить</button>
+      </div>
     </section>
   </main>
 
@@ -377,5 +379,6 @@
       <address>Контакты: <a href="feedback.html">форма обратной связи</a></address>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

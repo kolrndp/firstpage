@@ -189,6 +189,36 @@ thead{ background: rgba(255,255,255,0.05); }
   padding: 8px;
 }
 
+#map{
+  height: 420px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  overflow: hidden;
+}
+
+.canvas-draw{
+  width: 100%;
+  height: 220px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.04);
+  touch-action: none;
+}
+.canvas-wrap{
+  position: relative;
+}
+.canvas-clear{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
 label{ display:block; font-weight:700; margin: 12px 0 6px; }
 input, textarea, select{
   width:100%;
