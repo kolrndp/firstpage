@@ -107,6 +107,22 @@
       </form>
     </section>
 
+    <section class="card" id="chat">
+      <h2>Чат с автором</h2>
+      <div id="chatMessages" class="chat__messages" aria-live="polite">
+        <div id="chatTyping" class="chat__typing" hidden>Печатает...</div>
+      </div>
+      <div class="chat__controls">
+        <input id="chatInput" type="text" placeholder="Напиши сообщение...">
+        <button id="chatSend" type="button">Отправить</button>
+        <button id="chatVoice" type="button" aria-pressed="false">🎤</button>
+        <button id="chatClear" type="button">Удалить чат</button>
+      </div>
+      <p id="chatRecordStatus" class="chat__hint muted" aria-live="polite" hidden>
+        Запись... <span id="chatRecordTime">00:00</span>
+      </p>
+    </section>
+
     <section class="card">
       <h2 style="margin:0 0 8px;">Возврат</h2>
       <p style="margin:0;">Вернуться на <a href="index.html">главную страницу</a>.</p>
@@ -119,5 +135,6 @@
       <address>Контакты: через эту форму.</address>
     </div>
   </footer>
+  <script src="script.js" defer></script>
 </body>
 </html>
