@@ -83,6 +83,9 @@ code{
 }
 
 ul, ol { margin: 10px 0 10px 22px; }
+ul { list-style: square; }
+ol { list-style: decimal-leading-zero; }
+li::marker { color: rgba(233,238,247,0.65); }
 li { margin: 4px 0; }
 
 dt{ font-weight: 700; margin-top: 8px; }
@@ -425,6 +428,38 @@ legend{ padding: 0 8px; color: var(--muted); }
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.04);
   color: var(--text);
+}
+
+.submission-list{
+  display: grid;
+  gap: 14px;
+}
+.submission-item{
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+}
+.submission-item h3{
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.submission-meta{
+  display: grid;
+  gap: 4px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.submission-text{
+  margin: 0;
+  white-space: pre-wrap;
+}
+.submission-empty{
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px dashed rgba(255,255,255,0.16);
+  color: var(--muted);
 }
 
 .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }

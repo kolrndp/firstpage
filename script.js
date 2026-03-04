@@ -285,7 +285,12 @@ window.onload = () => {
       } else if (text.includes('распис')) {
         reply = 'Расписание моей группы на главной странице.';
       } else if (text.includes('учёб') || text.includes('учеб') || text.includes('курс') || text.includes('пара')) {
-        reply = 'Учёба насыщенная: кроме основных предметов активно занимаюсь вкр.';
+        const studyReplies = [
+          'Учебная нагрузка сейчас высокая, потому что сейчас конец последнего модуля 4го курса.',
+          'Больше всего времени уходит на учёбу и подготовку ВКР.',
+          'Много времени уходт на учебный проект.',
+        ];
+        reply = studyReplies[Math.floor(Math.random() * studyReplies.length)];
       } else if (text.includes('спасибо')) {
         reply = 'Пожалуйста! Рад был помочь.';
       } else {
